@@ -23,13 +23,14 @@
 #define MAGENTA RGB(127, 0, 127)
 #define CYAN RGB(0, 127, 127)
 
-#define DATA_PIN 2
-#define CLOCK_PIN 3
+#define DATA_PIN 11
+#define CLOCK_PIN 13
 
 #define STRIP2_HEAD_OFFSET(x) (113 - (x))
 #define STRIP3_HEAD_OFFSET(x) (112 + (x))
 
-/* TYPEDEF */
+/* TYPEDEFS */
+
 typedef void (*input_func)(int);
 
 /* VARIABLES */
@@ -37,6 +38,8 @@ typedef void (*input_func)(int);
 extern LPD8806 strip;
 
 /* FUNCTIONS */
+
+
 
 void Lights_Init(void);
 
@@ -64,5 +67,7 @@ void On_Rotary_Input(input_func func, int signal);
 void On_Sound_Input(input_func func, int signal);
 void On_Temperature_Input(input_func func, int signal);
 void On_Touch_Input(input_func func, int signal);
+
+short Get_Analog_Input();
 
 #endif //LIGHTLIB_H_INCLUDED

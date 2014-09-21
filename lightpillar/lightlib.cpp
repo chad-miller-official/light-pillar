@@ -1,6 +1,8 @@
 #include "lightlib.h"
 
-LPD8806 strip = LPD8806(LED_LENGTH, DATA_PIN, CLOCK_PIN);
+LPD8806 strip = LPD8806(LED_LENGTH);
+
+extern void analog_to_digital();
 
 void Lights_Init(void)
 {		
@@ -9,7 +11,7 @@ void Lights_Init(void)
 
 uint32_t Random_RGB()
 {
-	seed(millis());
+	srand(millis());
 	return RGB(rand() % 127, rand() % 127, rand() % 127);
 }
 
@@ -159,4 +161,10 @@ void On_Temperature_Input(input_func func, int signal)
 void On_Touch_Input(input_func func, int signal)
 {
 	func(signal);
+}
+
+short Get_Analog_Input()
+{
+	analog_to_digital();
+	return (short) (*(char*) (0x78) | *(char*) (0x79 << 0x8));
 }
