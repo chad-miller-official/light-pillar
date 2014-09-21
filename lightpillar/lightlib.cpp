@@ -166,5 +166,5 @@ void On_Touch_Input(input_func func, int signal)
 short Get_Analog_Input()
 {
 	analog_to_digital();
-	return (short) (*(char*) (0x78) | *(char*) (0x79 << 0x8));
+	return (short) ((*(char*) (0x12)) | ((*(char*) (0x13)) << 0x8));
 }

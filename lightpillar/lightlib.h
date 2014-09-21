@@ -39,8 +39,6 @@ extern LPD8806 strip;
 
 /* FUNCTIONS */
 
-
-
 void Lights_Init(void);
 
 inline uint32_t RGB(byte r, byte g, byte b) { return strip.Color(r, g, b); }
@@ -67,6 +65,10 @@ void On_Rotary_Input(input_func func, int signal);
 void On_Sound_Input(input_func func, int signal);
 void On_Temperature_Input(input_func func, int signal);
 void On_Touch_Input(input_func func, int signal);
+
+extern "C" {
+	void analog_to_digital();
+}
 
 short Get_Analog_Input();
 
